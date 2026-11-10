@@ -1,0 +1,21 @@
+# 原版 pi0 + 官方 ALOHA transfer-cube 仿真检查点。
+[model]
+family = "pi0"
+profile = "aloha_sim"
+
+[connection]
+# 使用 SSH 隧道：此处填写 Mac 本地回环地址。
+host = "127.0.0.1"
+port = 8000
+connect_timeout_seconds = 10.0
+inference_timeout_seconds = 180.0
+
+[simulation]
+task = "gym_aloha/AlohaTransferCube-v0"
+prompt = "Transfer cube"
+episodes = 1
+max_steps = 300
+replan_steps = 10
+seed = 7
+save_video = true
+display = false

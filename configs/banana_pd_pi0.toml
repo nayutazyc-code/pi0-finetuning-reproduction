@@ -1,0 +1,22 @@
+# 云端原版 pi0 + Mac 自定义香蕉场景。默认权重尚未针对本任务微调。
+[model]
+family = "pi0"
+profile = "aloha_sim"
+
+[connection]
+host = "127.0.0.1"
+port = 8000
+connect_timeout_seconds = 10.0
+inference_timeout_seconds = 180.0
+
+[simulation]
+task = "pi0_repro/BananaBox-v0"
+# 路径相对于本 TOML 所在目录；物体摆放复用预览配置。
+scene_config = "banana_demo_scene.toml"
+prompt = "Pick up the banana and place it inside the open box."
+episodes = 1
+max_steps = 600
+replan_steps = 10
+seed = 7
+save_video = true
+display = true

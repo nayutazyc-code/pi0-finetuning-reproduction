@@ -1,0 +1,23 @@
+{
+  "source": "assets/pi0_banana_lora/local/pi0_banana_train/norm_stats.json",
+  "state_std_floor": 0.01,
+  "original_state_std": [
+    2.1190537526706647e-06,
+    0.0,
+    4.5369080745095997e-07,
+    3.823958932474587e-07,
+    5.866593028613784e-08,
+    2.6597218942237276e-07,
+    2.7868061868799114e-05,
+    0.3020268850963891,
+    0.30619306425825754,
+    0.34544966238577457,
+    0.00030164019802692216,
+    0.4557855474753421,
+    0.33065357916478216,
+    0.4110388690296069
+  ],
+  "actions_stats_changed": false,
+  "training_and_inference_consistent": true,
+  "split": "train"
+}

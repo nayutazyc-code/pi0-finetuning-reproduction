@@ -1,0 +1,15 @@
+# 原版 pi0 的 LIBERO 数据接口；不使用 pi05_libero 或 pi0_fast_libero。
+# 需要服务器具有与 pi0_libero 配套的已微调检查点。
+# 此配置只供 infer-file 使用；Mac 的默认 .venv 不包含旧版 LIBERO。
+[model]
+family = "pi0"
+profile = "libero"
+
+[connection]
+host = "127.0.0.1"
+port = 8000
+connect_timeout_seconds = 10.0
+inference_timeout_seconds = 180.0
+
+[simulation]
+prompt = "pick up the object"

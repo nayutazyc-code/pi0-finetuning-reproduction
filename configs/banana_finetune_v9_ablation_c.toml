@@ -1,0 +1,37 @@
+# Ablation C: v9 data/loss/budget with the grasp and release event-window boost removed; bundled newlabels/event/near-term intervention, not a causal ablation.
+[data]
+directory = "data/lerobot/20261026-213307-merged-ffaed3"
+train_repo_id = "local/pi0_banana_train"
+prompt = "Pick up the banana and place it inside the open box."
+[model]
+family = "pi0"
+config_name = "pi0_banana_lora"
+action_horizon = 100
+strict_lora_only = true
+train_action_projections = true
+weighted_flow_loss = true
+image_augmentation = false
+temporal_training = true
+temporal_loss_weight = 0.0
+near_term_steps = 30
+near_term_weight = 2.0
+camera_crop = [275,110,540,345]
+[train]
+require_initial_norm_match = true
+num_train_steps = 1500
+batch_size = 8
+gradient_accumulation_steps = 4
+num_workers = 0
+seed = 49
+warmup_steps = 100
+peak_lr = 0.000005
+decay_lr = 0.000001
+save_interval = 500
+keep_period = 1000000
+log_interval = 25
+[paths]
+initial_checkpoint = "checkpoints/pi0_banana_lora/banana_v8_control32_3000/2999"
+assets_base_dir = "assets_motion_v9_norm"
+checkpoint_base_dir = "/root/pi0-motion-checkpoints"
+[sampling]
+weights_file = "assets_motion_v9/banana_sampling_boost1.json"

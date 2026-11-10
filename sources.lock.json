@@ -1,0 +1,28 @@
+{
+  "recorded_at": "2026-10-22T19:47:10.236139+08:00",
+  "scope": "Original pi0 only; inference weights run remotely",
+  "repositories": [
+    {
+      "path": "repos/openpi",
+      "url": "https://github.com/Physical-Intelligence/openpi.git",
+      "commit": "215abfb217dbac7d5f1273282331b9b1866c0479",
+      "management": "git submodule",
+      "upstream_submodules_initialized": false
+    }
+  ],
+  "selected_policy_configs": [
+    "pi0_aloha_sim",
+    "pi0_libero"
+  ],
+  "default_checkpoint": "gs://openpi-assets/checkpoints/pi0_aloha_sim",
+  "local_editable_packages": [
+    "repos/openpi/packages/openpi-client",
+    "."
+  ],
+  "upstream_file_sha256": {
+    "src/openpi/models/pi0.py": "24b32d7c6ed5e409459afa8ca5af96a4dae09c2dcdf48e828907e411f4f12342",
+    "src/openpi/models/pi0_config.py": "d321858c30b398126035ea2b6da09e1c422eeeebb5ebf8df631daf9dc77647fa",
+    "examples/aloha_sim/env.py": "e851d43c7ade89771ae5c8821a7e2dd7a9f1f14702e96f6f6f52afc95fc887d2",
+    "examples/aloha_sim/requirements.txt": "c655f18df0319eb5c0d0c4feff6029a103b24594967b556073d12acae0aca68c"
+  }
+}

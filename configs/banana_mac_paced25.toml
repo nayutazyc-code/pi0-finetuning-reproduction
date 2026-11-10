@@ -1,0 +1,58 @@
+# Mac clock-alignment candidate; preserve the original-pi0 v3/filter/cadence settings.
+# Original pi0 RTC candidate; retains the existing synchronous baseline.
+# 原版 π0 香蕉 LoRA 检查点；服务端必须以 banana profile 启动。
+[model]
+expected_checkpoint_suffix = "banana_v3_roi2000/1999"
+expected_norm_stats_sha256 = "2946707a8b5fc28659e96ca0ee5a017559cc6694a5b74f0091b08531764e3f0c"
+family = "pi0"
+profile = "aloha_sim"
+policy_config = "pi0_banana_lora"
+send_full_resolution = true
+
+[connection]
+host = "127.0.0.1"
+port = 8001
+connect_timeout_seconds = 10.0
+inference_timeout_seconds = 300.0
+image_transport = "png"
+
+[simulation]
+task = "pi0_repro/BananaBox-v0"
+# 路径相对于本 TOML 所在目录；物体摆放复用预览配置。
+scene_config = "banana_demo_scene.toml"
+prompt = "Pick up the banana and place it inside the open box."
+episodes = 1
+max_steps = 2000
+replan_steps = 50
+seed = 7
+save_video = true
+display = true
+
+# Matches the demonstrated maximum joint target rate (about 1.05 rad/s).
+max_joint_velocity = 1.1
+max_gripper_velocity = 1.5
+
+# Request cadence is measured from the observation origin; actual switching also depends on latency.
+async_inference = true
+request_interval_steps = 25
+real_time = true
+control_pacing = "before_step"
+display_backend = "glfw"
+display_fps = 50.0
+async_video = true
+# 关节目标加速度采用较温和的上限，避免过度平滑造成跟踪滞后。
+# 夹爪继续采用独立速度限制；额外动作块混合关闭。
+max_joint_acceleration = 40.0
+chunk_blend_steps = 0
+
+rtc_enabled = true
+rtc_delay_steps = 10
+rtc_blend_steps = 20
+rtc_guidance_max = 0.5
+
+# Render and record each 50 Hz state; apply actions on an aligned wall clock.
+render_on_request = true
+video_fps = 50
+
+# Critically damped arm-target reference filter, not a task-phase controller.
+joint_target_filter_hz = 3.0

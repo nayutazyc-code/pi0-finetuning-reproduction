@@ -1,0 +1,13 @@
+# 第一批：固定随机种子，在已成功位置附近分层覆盖 24 个独立布局。
+# 位置单位米，角度单位度；训练/验证/测试布局在采集前分配。
+[collection]
+expert_config = "banana_expert.toml"
+seed = 20261023
+train_layouts = 16
+validation_layouts = 4
+test_layouts = 4
+banana_x = [0.16, 0.20]
+banana_y = [0.46, 0.50]
+banana_yaw_degrees = [0.0, 20.0]
+box_x = [0.11, 0.15]
+box_y = [0.70, 0.74]

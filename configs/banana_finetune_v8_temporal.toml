@@ -1,0 +1,35 @@
+# Original pi0 H100 matched v8 temporal; v6 initialization, fresh optimizer, fixed normalization.
+[data]
+directory = "data/lerobot/20261026-142111-merged-e54349"
+train_repo_id = "local/pi0_banana_train"
+prompt = "Pick up the banana and place it inside the open box."
+[model]
+family = "pi0"
+config_name = "pi0_banana_lora"
+action_horizon = 100
+strict_lora_only = true
+train_action_projections = true
+weighted_flow_loss = true
+image_augmentation = false
+temporal_training = true
+temporal_loss_weight = 0.1
+camera_crop = [275,110,540,345]
+[train]
+require_initial_norm_match = true
+num_train_steps = 3000
+batch_size = 8
+gradient_accumulation_steps = 4
+num_workers = 0
+seed = 48
+warmup_steps = 100
+peak_lr = 0.000005
+decay_lr = 0.000001
+save_interval = 500
+keep_period = 2000
+log_interval = 25
+[paths]
+initial_checkpoint = "checkpoints/pi0_banana_lora/banana_v6_long100_accum8000/7999"
+assets_base_dir = "assets_v8_temporal_norm"
+checkpoint_base_dir = "checkpoints"
+[sampling]
+weights_file = "assets_v7_recovery/banana_sampling.json"

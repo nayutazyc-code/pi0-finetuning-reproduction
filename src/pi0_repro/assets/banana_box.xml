@@ -1,0 +1,48 @@
+<mujocoinclude>
+  <worldbody>
+    <!-- A rigid, curved banana made from overlapping collision capsules.
+         Positions and yaw are overridden by configs/banana_box.toml. -->
+    <body name="banana" pos="0.18 0.48 0.045">
+      <freejoint name="banana_joint"/>
+      <!-- Explicit inertia is needed because the upstream compiler only
+           infers inertia from geom groups 4 and 5. Values are approximate. -->
+      <inertial pos="0 -0.004 0" mass="0.12"
+                diaginertia="0.00004 0.00028 0.00030"/>
+      <geom name="banana_segment_0" type="capsule" size="0.014"
+            fromto="-0.055 0.004 0 -0.025 -0.009 0"
+            rgba="0.96 0.78 0.05 1" condim="4" friction="0.8 0.005 0.0001"/>
+      <geom name="banana_segment_1" type="capsule" size="0.016"
+            fromto="-0.025 -0.009 0 0.010 -0.012 0"
+            rgba="1.0 0.84 0.08 1" condim="4" friction="0.8 0.005 0.0001"/>
+      <geom name="banana_segment_2" type="capsule" size="0.015"
+            fromto="0.010 -0.012 0 0.045 -0.002 0"
+            rgba="0.98 0.81 0.04 1" condim="4" friction="0.8 0.005 0.0001"/>
+      <geom name="banana_segment_3" type="capsule" size="0.012"
+            fromto="0.045 -0.002 0 0.065 0.012 0.001"
+            rgba="0.95 0.76 0.03 1" condim="4" friction="0.8 0.005 0.0001"/>
+      <!-- Brown tips are visual only; the yellow segments define collisions. -->
+      <geom name="banana_tip_left" type="capsule" size="0.005"
+            fromto="-0.064 0.010 0 -0.073 0.016 0"
+            rgba="0.24 0.13 0.04 1" contype="0" conaffinity="0"/>
+      <geom name="banana_tip_right" type="capsule" size="0.005"
+            fromto="0.073 0.018 0.001 0.081 0.027 0.001"
+            rgba="0.24 0.13 0.04 1" contype="0" conaffinity="0"/>
+    </body>
+
+    <!-- No joint: the box is fixed. Each geom is a solid collision object.
+         Outer dimensions: 0.26 x 0.20 x 0.10 m.
+         Interior: x in [-0.12, 0.12], y in [-0.09, 0.09], floor z=0.01. -->
+    <body name="open_box" pos="0.13 0.72 0">
+      <geom name="box_bottom" type="box" pos="0 0 0.005"
+            size="0.13 0.10 0.005" rgba="0.35 0.48 0.66 1" friction="0.8 0.005 0.0001"/>
+      <geom name="box_wall_left" type="box" pos="-0.125 0 0.055"
+            size="0.005 0.10 0.045" rgba="0.50 0.63 0.80 1"/>
+      <geom name="box_wall_right" type="box" pos="0.125 0 0.055"
+            size="0.005 0.10 0.045" rgba="0.50 0.63 0.80 1"/>
+      <geom name="box_wall_front" type="box" pos="0 -0.095 0.055"
+            size="0.12 0.005 0.045" rgba="0.46 0.59 0.76 1"/>
+      <geom name="box_wall_back" type="box" pos="0 0.095 0.055"
+            size="0.12 0.005 0.045" rgba="0.50 0.63 0.80 1"/>
+    </body>
+  </worldbody>
+</mujocoinclude>

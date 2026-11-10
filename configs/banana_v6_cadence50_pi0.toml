@@ -1,0 +1,46 @@
+# Original-pi0 v6 cadence candidate; nominal request age 50 control steps.
+# Only request_interval_steps differs from the bridge20 cadence15 control.
+[model]
+expected_checkpoint_suffix = "banana_v6_long100_accum8000/7999"
+expected_norm_stats_sha256 = "6c6e7a92643c76996bf15ba9fc3d3e346dd6bc3d8697712118d9fdb49dedf269"
+family = "pi0"
+profile = "aloha_sim"
+policy_config = "pi0_banana_lora"
+send_full_resolution = true
+
+[connection]
+host = "127.0.0.1"
+port = 8001
+connect_timeout_seconds = 10.0
+inference_timeout_seconds = 300.0
+image_transport = "png"
+
+[simulation]
+task = "pi0_repro/BananaBox-v0"
+scene_config = "banana_demo_scene.toml"
+prompt = "Pick up the banana and place it inside the open box."
+episodes = 1
+max_steps = 2000
+replan_steps = 100
+seed = 7
+save_video = true
+display = true
+max_joint_velocity = 1.1
+max_gripper_velocity = 1.5
+async_inference = true
+request_interval_steps = 50
+real_time = true
+control_pacing = "before_step"
+display_backend = "glfw"
+display_fps = 50.0
+async_video = true
+max_joint_acceleration = 40.0
+chunk_blend_steps = 20
+chunk_blend_shape = "quintic"
+rtc_enabled = true
+rtc_delay_steps = 10
+rtc_blend_steps = 20
+rtc_guidance_max = 0.5
+render_on_request = true
+video_fps = 50
+joint_target_filter_hz = 3.0

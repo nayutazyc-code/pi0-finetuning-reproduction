@@ -1,0 +1,11 @@
+# Fixed validation layout004 used in the recorded comparison.
+[scene]
+banana_position = [0.196396, 0.468028, 0.045]
+banana_yaw_degrees = 19.822411
+banana_mass_kg = 0.12
+banana_friction = [0.8, 0.005, 0.0001]
+box_position = [0.145609, 0.713925, 0.0]
+camera = "top"
+settle_seconds = 0.6
+controller_profile = "position_pd"
+wrist_damping_scale = 2.0

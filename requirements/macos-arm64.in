@@ -1,0 +1,15 @@
+# Direct requirements are also declared in pyproject.toml.
+# Install openpi-client only from the pinned local official checkout.
+numpy==1.26.4
+gym-aloha==0.1.1
+gymnasium==1.0.0
+mujoco==2.3.7
+dm-control==1.0.14
+dm-tree==0.1.8
+msgpack==1.1.0
+Pillow==11.0.0
+websockets==14.1
+imageio==2.36.1
+imageio-ffmpeg==0.6.0
+typing-extensions==4.12.2
+matplotlib==3.9.3

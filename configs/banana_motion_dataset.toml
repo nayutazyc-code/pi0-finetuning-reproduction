@@ -1,0 +1,12 @@
+# Independent train-only layouts assigned before collection; existing holdouts stay fixed.
+[collection]
+expert_config = "banana_motion_expert.toml"
+seed = 2026102601
+train_layouts = 12
+validation_layouts = 0
+test_layouts = 0
+banana_x = [0.155, 0.205]
+banana_y = [0.455, 0.505]
+banana_yaw_degrees = [-5.0, 25.0]
+box_x = [0.105, 0.155]
+box_y = [0.695, 0.745]

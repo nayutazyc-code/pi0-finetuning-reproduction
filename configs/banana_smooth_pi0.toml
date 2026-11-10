@@ -1,0 +1,42 @@
+# 流畅度优化候选：同一 v3 ROI 权重；异步时间对齐执行。
+# 原版 π0 香蕉 LoRA 检查点；服务端必须以 banana profile 启动。
+[model]
+family = "pi0"
+profile = "aloha_sim"
+policy_config = "pi0_banana_lora"
+send_full_resolution = true
+
+[connection]
+host = "127.0.0.1"
+port = 8001
+connect_timeout_seconds = 10.0
+inference_timeout_seconds = 300.0
+image_transport = "png"
+
+[simulation]
+task = "pi0_repro/BananaBox-v0"
+# 路径相对于本 TOML 所在目录；物体摆放复用预览配置。
+scene_config = "banana_demo_scene.toml"
+prompt = "Pick up the banana and place it inside the open box."
+episodes = 1
+max_steps = 2000
+replan_steps = 50
+seed = 7
+save_video = true
+display = true
+
+# Matches the demonstrated maximum joint target rate (about 1.05 rad/s).
+max_joint_velocity = 1.1
+max_gripper_velocity = 1.5
+
+# 50 步预测保留；剩余 20 步时后台请求，跳过延迟期间已经过期的预测。
+async_inference = true
+prefetch_steps = 20
+real_time = true
+display_backend = "glfw"
+display_fps = 50.0
+async_video = true
+# 关节目标加速度采用较温和的上限，避免过度平滑造成跟踪滞后。
+# 夹爪继续采用独立速度限制；额外动作块混合关闭。
+max_joint_acceleration = 40.0
+chunk_blend_steps = 0

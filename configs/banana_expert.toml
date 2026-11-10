@@ -1,0 +1,19 @@
+# 固定布局的仿真脚本专家；无需模型或云服务器。
+[expert]
+scene_config = "banana_demo_scene.toml"
+prompt = "Pick up the banana and place it inside the open box."
+max_steps = 2000
+# 坐标均为米。TCP 使用上游 cali_right_site1，位于夹爪前端。
+approach_height = 0.16
+transport_height = 0.20
+grasp_local_x = 0.0
+grasp_local_y = -0.01
+grasp_z_offset = -0.014
+# 适度夹紧，避免过度挤压弯曲物体。
+closed_gripper = 0.35
+cartesian_speed = 0.08
+joint_speed = 0.7
+close_seconds = 1.0
+open_seconds = 0.7
+settle_seconds = 0.8
+position_tolerance = 0.006

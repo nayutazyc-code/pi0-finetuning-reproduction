@@ -1,0 +1,23 @@
+# 原版 π0 香蕉 LoRA 检查点；服务端必须以 banana profile 启动。
+[model]
+family = "pi0"
+profile = "aloha_sim"
+policy_config = "pi0_banana_lora"
+
+[connection]
+host = "127.0.0.1"
+port = 8000
+connect_timeout_seconds = 10.0
+inference_timeout_seconds = 180.0
+
+[simulation]
+task = "pi0_repro/BananaBox-v0"
+# 路径相对于本 TOML 所在目录；物体摆放复用预览配置。
+scene_config = "banana_demo_scene.toml"
+prompt = "Pick up the banana and place it inside the open box."
+episodes = 1
+max_steps = 2000
+replan_steps = 10
+seed = 7
+save_video = true
+display = true

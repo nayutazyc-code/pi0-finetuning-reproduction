@@ -1,0 +1,32 @@
+.venv/
+.runtime/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.DS_Store
+.env
+.env.*
+!.env.example
+HANDOFF_*.md
+*.code-workspace
+first_random_pose_multiview.mp4
+configs/*.local.toml
+requirements/environment.json
+outputs/*
+!outputs/.gitkeep
+data/*
+!data/.gitkeep
+models/
+.cache/
+.mplconfig/
+build/
+dist/
+
+# Separate data conversion runtime and pinned dependency snapshot
+.venv-data/
+.vendor/
+
+# Cloud training artifacts (norm_stats under assets remain reviewable)
+checkpoints/
+logs/*
+!logs/.gitkeep

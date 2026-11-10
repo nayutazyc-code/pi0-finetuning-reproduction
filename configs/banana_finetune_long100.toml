@@ -1,0 +1,35 @@
+# Original pi0 long-chunk continuation; v5 initialization and matching versioned normalization.
+# Batch 2 x accumulation 8 is provisional until the 24 GB memory sweep selects a measured configuration.
+# Action std floor is versioned; optimizer state starts fresh.
+[data]
+directory = "data/lerobot/20261024-185715-merged-ebdbe3"
+train_repo_id = "local/pi0_banana_train"
+prompt = "Pick up the banana and place it inside the open box."
+[model]
+family = "pi0"
+config_name = "pi0_banana_lora"
+action_horizon = 100
+strict_lora_only = true
+train_action_projections = true
+weighted_flow_loss = true
+image_augmentation = false
+camera_crop = [275,110,540,345]
+[train]
+require_initial_norm_match = true
+num_train_steps = 8000
+batch_size = 2
+gradient_accumulation_steps = 8
+num_workers = 0
+seed = 46
+warmup_steps = 400
+peak_lr = 0.00002
+decay_lr = 0.000002
+save_interval = 1000
+keep_period = 2000
+log_interval = 25
+[paths]
+initial_checkpoint = "checkpoints/pi0_banana_lora/banana_v5_quality_norm1000/999"
+assets_base_dir = "assets_quality_norm"
+checkpoint_base_dir = "checkpoints"
+[sampling]
+weights_file = "assets_quality/banana_sampling.json"

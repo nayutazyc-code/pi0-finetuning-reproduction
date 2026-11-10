@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools==79.0.1", "wheel==0.45.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pi0-mac-reproduction"
+version = "0.1.0"
+description = "Mac simulation client for the original pi0, with remote GPU inference"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+  "openpi-client==0.1.0",
+  "numpy==1.26.4",
+  "gym-aloha==0.1.1",
+  "gymnasium==1.0.0",
+  "mujoco==2.3.7",
+  "glfw==2.11.0",
+  "PyOpenGL==3.1.10",
+  "dm-control==1.0.14",
+  "dm-tree==0.1.8",
+  "msgpack==1.1.0",
+  "Pillow==11.0.0",
+  "websockets==14.1",
+  "imageio==2.36.1",
+  "imageio-ffmpeg==0.6.0",
+  "typing-extensions==4.12.2",
+  "matplotlib==3.9.3",
+]
+
+[project.optional-dependencies]
+motion = ["ruckig==0.19.4"]
+
+[project.scripts]
+pi0-mac = "pi0_repro.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+pi0_repro = ["assets/*.xml"]

@@ -1,0 +1,12 @@
+{
+  "repository": "https://github.com/huggingface/lerobot",
+  "commit": "0cf864870cf29f4738d3ade893e6fd13fbd7cdb5",
+  "archive_url": "https://codeload.github.com/huggingface/lerobot/tar.gz/0cf864870cf29f4738d3ade893e6fd13fbd7cdb5",
+  "archive_sha256": "2455b2ed303778f8bcd570caceae0b22c97908eaaf029dff868d9f237b495c00",
+  "local_path": ".vendor/lerobot-0cf864870cf29f4738d3ade893e6fd13fbd7cdb5",
+  "source_file_sha256": {
+    "lerobot/common/datasets/lerobot_dataset.py": "2c56f002392d15f41147f0e635d53cdc31cd04fe676bec6f329206bbea622a0d",
+    "lerobot/common/datasets/utils.py": "ecb63a1d84610f36dda78047058ef2e8c7b840544fef262baad7ccc2142ad031",
+    "lerobot/common/datasets/compute_stats.py": "9afd2da5f91d646e90cdacf9d9ab638e6d7c846fe8b82eb7630d5115fce30466"
+  }
+}

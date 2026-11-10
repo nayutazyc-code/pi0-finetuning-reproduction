@@ -1,0 +1,18 @@
+# 独立数据转换环境；仅安装固定 LeRobot 数据 API 所需子集，不是完整训练/真机环境。
+# LeRobot 源码提交及归档哈希见 lerobot-source.json，源码通过 run_data.sh 的 PYTHONPATH 加载。
+torch==2.7.1
+torchvision==0.22.1
+datasets==3.6.0
+pyarrow==20.0.0
+av==17.0.0
+huggingface-hub==0.32.3
+draccus==0.10.0
+jsonlines==4.0.0
+numpy==1.26.4
+Pillow==11.2.1
+packaging==25.0
+pandas==2.2.3
+
+# 训练数据/统计类型工具的轻量依赖；模型训练仍只在云端执行。
+pydantic==2.11.5
+numpydantic==1.6.10

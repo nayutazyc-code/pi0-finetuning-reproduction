@@ -1,0 +1,32 @@
+# Original pi0 continuation. Retains the v3 checkpoint normalization (assets_v2).
+# ROI candidate: only launch if full-view validation remains inaccurate.
+# Continuation retains checkpoint normalization; optimizer state starts fresh.
+[data]
+directory = "data/lerobot/20261024-185715-merged-ebdbe3"
+train_repo_id = "local/pi0_banana_train"
+prompt = "Pick up the banana and place it inside the open box."
+[model]
+family = "pi0"
+config_name = "pi0_banana_lora"
+strict_lora_only = true
+train_action_projections = true
+weighted_flow_loss = true
+image_augmentation = false
+camera_crop = [275,110,540,345]
+[train]
+num_train_steps = 1000
+batch_size = 4
+num_workers = 0
+seed = 45
+warmup_steps = 100
+peak_lr = 0.00002
+decay_lr = 0.000002
+save_interval = 500
+keep_period = 500
+log_interval = 25
+[paths]
+initial_checkpoint = "checkpoints/pi0_banana_lora/banana_v3_roi2000/1999"
+assets_base_dir = "assets_v2"
+checkpoint_base_dir = "checkpoints"
+[sampling]
+weights_file = "assets_quality/banana_sampling.json"
